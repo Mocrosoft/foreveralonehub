@@ -1,0 +1,121 @@
+{%extends "master/base.html" %}
+
+<!--  HEADER SECTIE -->
+{% load staticfiles %}
+<!--  HEADER SECTIE -->
+{%block page_style %}
+<style>
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,300,500,700,900,800,600);
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  background: #0d3532;
+  color: #fff;
+  text-align: center;
+}
+
+h1 {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%) rotateZ(20deg);
+  font-size: 200px;
+  font-weight: 800;
+  text-shadow: rgb(180, 59, 47) 1px 1px,
+    rgb(13, 53, 50) 2px 2px,
+    rgb(13, 53, 50) 3px 3px,
+    rgb(13, 53, 50) 4px 4px,
+    rgb(13, 53, 50) 5px 5px,
+    rgb(13, 53, 50) 6px 6px,
+    rgb(13, 53, 50) 7px 7px,
+    rgb(13, 53, 50) 8px 8px,
+    rgb(15, 56, 50) 9px 9px,
+    rgb(15, 56, 50) 10px 10px,
+    rgb(15, 56, 50) 11px 11px,
+    rgb(15, 56, 50) 12px 12px,
+    rgb(15, 56, 50) 13px 13px,
+    rgb(15, 56, 50) 14px 14px,
+    rgb(15, 56, 50) 15px 15px,
+    rgb(15, 56, 50) 16px 16px,
+    rgb(15, 56, 50) 17px 17px,
+    rgb(15, 56, 50) 18px 18px,
+    rgb(15, 56, 50) 19px 19px,
+    rgb(15, 56, 50) 20px 20px,
+    rgb(15, 56, 50) 21px 21px,
+    rgb(15, 56, 50) 22px 22px,
+    rgb(15, 56, 50) 23px 23px,
+    rgb(15, 56, 50) 24px 24px,
+    rgb(15, 56, 50) 25px 25px,
+    rgb(15, 56, 50) 26px 26px,
+    rgb(15, 58, 52) 27px 27px,
+    rgb(16, 59, 52) 28px 28px,
+    rgb(18, 61, 52) 29px 29px,
+    rgb(18, 62, 52) 30px 30px,
+    rgb(18, 63, 53) 31px 31px,
+    rgb(18, 63, 53) 32px 32px,
+    rgb(21, 63, 53) 33px 33px,
+    rgb(22, 65, 54) 34px 34px,
+    rgb(24, 65, 54) 35px 35px,
+    rgb(25, 65, 54) 36px 36px,
+    rgb(25, 68, 54) 37px 37px,
+    rgb(25, 68, 55) 38px 38px,
+    rgb(26, 68, 55) 39px 39px,
+    rgb(27, 70, 55) 40px 40px,
+    rgb(28, 70, 55) 41px 41px,
+    rgb(29, 71, 56) 42px 42px,
+    rgb(30, 71, 56) 43px 43px,
+    rgb(31, 71, 56) 44px 44px,
+    rgb(32, 72, 57) 45px 45px,
+    rgb(33, 72, 57) 46px 46px,
+    rgb(34, 72, 57) 47px 47px,
+    rgb(35, 73, 57) 48px 48px,
+    rgb(36, 73, 58) 49px 49px,
+    rgb(37, 73, 58) 50px 50px,
+    rgb(38, 74, 58) 51px 51px,
+    rgb(39, 74, 58) 52px 52px,
+    rgb(41, 74, 59) 53px 53px,
+    rgb(42, 75, 59) 54px 54px,
+    rgb(42, 75, 59) 55px 55px,
+    rgb(43, 76, 60) 56px 56px;
+}
+
+h1::after {
+  display: block;
+  content: 'Sorry, but the page you were trying to view does not exist.';
+  font: 600 21px/1.8 'Work Sans', sans-serif;
+  text-shadow: rgb(180, 59, 47) 1px 1px,
+    rgb(18, 59, 47) 2px 2px,
+    rgb(21, 59, 47) 3px 3px,
+    rgb(24, 59, 47) 4px 4px,
+    rgb(26, 59, 47) 5px 5px,
+    rgb(28, 59, 47) 6px 6px;
+}
+
+</style>
+{%endblock %}
+
+{%block title%}
+    Page not found
+{% endblock %}
+
+
+
+<!--  	CONTENT  -->
+
+{% block content %}
+
+<div class="row" style="height:80%;border-bottom: 2px solid whitesmoke;">
+	<h1>404</h1>
+</div>
+{% endblock %}
+
+
+
+
+<!--- FOOTER  -->
+{%block page_scripts %}	
+{%endblock %}				
+
+
+
+

@@ -1,0 +1,37 @@
+{% extends "master/base.html" %}
+{% load staticfiles %}
+
+{% block title %}Privacybeleid{% endblock %}
+
+{% block content %}
+{% if privacy_beleid_body != None %}
+    <h1 style="padding: 0 0 0 100px;">{{privacy_beleid_body.title}}</h1>
+    <p style="font-size: 1.6em;padding: 0 0 0 100px; border:4px solid whitesmoke;">
+    {{privacy_beleid_body.content}}
+    </p>
+{% endif %}
+    {% if privacy_beleid_sub != None %}
+    <p style="font-size: 1.6em; padding: 0 0 0 100px;">{{privacy_beleid_sub.title}}
+    {% endif %}
+<ul style="font-size: 1.4em; padding: 0 0 0 120px;">
+    {% if bedrijfsnaam != None %}
+        <li>{{ bedrijfsnaam.title}}</li>
+    {% endif %}
+    {% if bedrijfsadres != None %}
+    <li>{{bedrijfsadres.title}}</li>
+    {% endif %}
+    {% if bedrijftelefoon != None %}
+    <li>{{bedrijftelefoon.title}}</li>
+    {% endif %}
+    {% if bedrijfsemail != None %}
+        <li>{{bedrijfsemail}}</li>
+    {% endif %}
+    </ul>
+<div style="height:45%;"><p></p></div>
+{% endblock %}
+
+
+
+<!--- FOOTER  -->
+{%block page_scripts %}
+{%endblock %}

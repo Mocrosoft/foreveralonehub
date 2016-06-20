@@ -1,0 +1,85 @@
+{%extends "master/base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+<!--  HEADER SECTIE -->
+{%block page_style %}
+ <link href="{% static 'master/css/content/faq/style.css' %}" rel="stylesheet">
+{%endblock %}
+
+{%block title%}
+    {% trans "Advies" %}
+{% endblock %}
+
+
+<!--  	CONTENT  -->
+
+{% block content %}
+
+<!-- SRTART PAGE HEADER -->
+<div class="site-showcase container">
+    <div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{% trans "Meest gestelde vragen en onze adviezen" %} </h1>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- END PAGE HEADER -->
+
+<div class="container">
+    <section class="cd-faq">
+	<ul class="cd-faq-categories">
+		<li><a class="selected" href="#basics">{% trans "Begrippen" %}</a></li>
+		<li><a href="#account">{% trans "Algemeen" %}</a></li>
+	</ul> <!-- cd-faq-categories -->
+
+	<div class="cd-faq-items">
+		<ul id="basics" class="cd-faq-group">
+			<li class="cd-faq-title"><h2>{% trans "Begrippen" %}</h2></li>
+			<li>
+				{% for faq in faq_begrippen %}
+					<a class="cd-faq-trigger" href="#0">{{faq.title}}</a>
+					<div class="cd-faq-content">
+						<p>{{faq.content}}</p>
+					</div> <!-- cd-faq-content -->
+				{% endfor %}
+			</li>
+
+		</ul> <!-- cd-faq-group -->
+
+		<ul id="account" class="cd-faq-group">
+			<li class="cd-faq-title"><h2>{% trans "Algemeen" %}</h2></li>
+
+			<li>
+				{% for faq in faq_algemeen %}
+					<a class="cd-faq-trigger" href="#0">{{faq.title}}</a>
+					<div class="cd-faq-content">
+						<p>{{faq.content}}</p>
+					</div> <!-- cd-faq-content -->
+				{% endfor %}
+			</li>
+		</ul> <!-- cd-faq-group -->
+
+    </div> <!-- cd-faq-items -->
+	<a href="#0" class="cd-close-panel">Close</a>
+</section> <!-- cd-faq -->
+	<div style="text-align: center"><h2>Hebt u nog vragen? Ik help u graag verder!</h2>
+		<p>
+			Hebt u vragen over het te koop stellen van een onroerend goed? Wilt u er zeker van zijn dat uw verkoopdossier volledig is?
+			Neem vrijblijvend contact op!
+		</p>
+	</div>
+</div>
+{% endblock %}
+
+
+
+
+<!--- FOOTER  -->
+{%block page_scripts %}
+<script src="{% static 'master/js//content/faq/jquery.mobile.custom.min.js' %}"> </script>
+<script src="{% static 'master/js/content/faq/main.js' %}"></script> <!-- Resource jQuery -->
+{%endblock %}
