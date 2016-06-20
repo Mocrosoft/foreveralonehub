@@ -72,7 +72,7 @@
                 {% else %}
                     <li><a href="{% url 'te_huur' %}" rel="tag">{% trans "Panden" %}</a></li>
                 {% endif %}
-                <li class="active">{{pand.type}} in {{pand.gemeente}} {{pand.stad}}</li>
+                <li class="active">{{pand.type}} in {{pand.gemeente}} {{pand.regio}}</li>
             </ol>
             <div id="advanceSearch" class=" modal fade" role="dialog">
     <div class="modal-dialog myModal">
@@ -299,8 +299,8 @@
                                         <div class="listing_detail col-sm-4"><strong>Adres:</strong>
                                             {{pand.straat_naam}} {{pand.huis_nummer}}
                                         </div>
-                                        <div class="listing_detail col-sm-4"><strong>Stad:</strong>
-                                            {{pand.stad}}
+                                        <div class="listing_detail col-sm-4"><strong>Regio:</strong>
+                                            {{pand.regio}}
                                         </div>
                                         <div class="listing_detail col-sm-4"><strong>Postcode:</strong>
                                             {{pand.postcode}}

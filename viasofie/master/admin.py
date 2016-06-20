@@ -37,10 +37,10 @@ class DocumentInlineAdmin(admin.TabularInline):
 
 
 class PandAdmin(admin.ModelAdmin):
-    list_display = ('referentienummer', 'inkijker', 'user', 'fase', 'straat', 'postcode', 'stad', 'prijs', 'profiel_foto_img', 'datum')
-    fields = (('referentienummer', 'inkijker'), 'user', ('straat_naam', 'huis_nummer'), ('postcode', 'gemeente'), ('stad', 'land'), ('verdieping', 'aantal_kamers'), 'status', ('staat', 'type', 'fase'), 'bouwjaar', 'prijs',
+    list_display = ('referentienummer', 'inkijker', 'user', 'fase', 'straat', 'postcode', 'regio', 'prijs', 'profiel_foto_img', 'datum')
+    fields = (('referentienummer', 'inkijker'), 'user', ('straat_naam', 'huis_nummer'), ('postcode', 'gemeente'), ('regio', 'land'), ('verdieping', 'aantal_kamers'), 'status', ('staat', 'type', 'fase'), 'bouwjaar', 'prijs',
               'beschrijving', ('profiel_foto', 'plattegrond_gelijksvloer', 'plattegrond_eerste_verdiep'))
-    search_fields = ('fase__naam', 'postcode', 'stad')
+    search_fields = ('fase__naam', 'postcode', 'regio')
     list_filter = ['datum']
     inlines = [ImageInlineAdmin, DocumentInlineAdmin, CriteriaInlineAdmin, EigenschapInlineAdmin, VerbruikInlineAdmin, WettelijkInlineAdmin]
     ImageInlineAdmin.can_delete = True
@@ -61,7 +61,7 @@ class PandCriteriaAdmin(admin.ModelAdmin):
         return {}
     list_display = ('pand', 'aantal', 'criteria')
     fields = ('pand', ('aantal', 'criteria'))
-    search_fields = ('pand__postcode', 'pand__stad', 'criteria__naam')
+    search_fields = ('pand__postcode', 'pand__regio', 'criteria__naam')
 
 
 class PandEigenschapAdmin(admin.ModelAdmin):

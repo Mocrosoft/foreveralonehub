@@ -139,7 +139,7 @@ class Pand(models.Model):
     staat = models.ForeignKey(Staat, on_delete=models.CASCADE)
     straat_naam = models.CharField(max_length=255, validators=[alphaChar])
     huis_nummer = models.IntegerField()
-    stad = models.CharField(max_length=255, validators=[alphaChar])
+    regio = models.CharField(max_length=255, validators=[alphaChar])
     gemeente = models.CharField(max_length=255, validators=[alphaChar])
     postcode = models.IntegerField()
     bouwjaar = models.IntegerField(blank=True, null=True)
@@ -194,7 +194,7 @@ class Pand(models.Model):
         return pand_documenten
 
     def __str__(self):
-        return self.straat_naam + ' ' + str(self.huis_nummer) + ' ' + self.stad + ' ' + str(self.postcode) + ' ' + str(self.type)
+        return self.straat_naam + ' ' + str(self.huis_nummer) + ' ' + self.regio + ' ' + str(self.postcode) + ' ' + str(self.type)
 
 
 class Image(models.Model):

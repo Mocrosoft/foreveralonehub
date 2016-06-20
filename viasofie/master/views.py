@@ -727,7 +727,7 @@ class IndexView(generic.ListView):
         return render(request, 'master/index.html', context)
 
     def post(self, request):
-        kijker = Pand.objects.all()
+        kijker = Pand.objects.filter(inkijker=True)
         type = TypeHuis.objects.all()
         pand_eigenschappen = PandEigenschap.objects.all()
         eigenschappen = Eigenschap.objects.all()

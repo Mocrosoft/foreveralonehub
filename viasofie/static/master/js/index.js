@@ -161,6 +161,7 @@ $( document ).ready(function() {
                 data: {csrfmiddlewaretoken: token},
                 success: function (data) {
                     if (data != undefined && data.length > 0) {
+                         $('#favorite_property > .list-unstyled > .item').empty();
                          for (i = 0; i < data.length; i++) {
                             if (data[i]['model'] === "master.pand") {
                                 found_pand = initTemplateData(data, false, 'favorite_property', '');
@@ -183,7 +184,7 @@ $( document ).ready(function() {
     }
 
 
-    function loadPandTemplate(referentienummer, type, stad, straat, postcode, status,
+    function loadPandTemplate(referentienummer, type, regio, gemeente, straat, postcode, status,
                               profiel_foto, inkijker, oppervlakte, aantal_kamers, aantal_slaapkamers,
                                 aantal_badkamers, prijs, huisnummer, heartIcon, naam_slaapkamer, naam_badkamer,
                               beschrijving) {
@@ -213,8 +214,8 @@ $( document ).ready(function() {
         '<a href="' + pand_url + '' + referentienummer + '">' +
         '<div class="photo">' +
         '<div class="property-title" data-toggle="tooltip" data-placement="top" title="">' +
-        '<h3 class="title">' + type + ' in '  + stad + '</h3>' +
-        '<h4 class="address">' + straat + ' ' + huisnummer + ', ' + postcode + ' ' + stad + ', België</h4>' +
+        '<h3 class="title">' + type + ' in '  + gemeente + '</h3>' +
+        '<h4 class="address">' + straat + ' ' + huisnummer + ', ' + postcode + ' ' + gemeente + ', België</h4>' +
         '</div>' +
         '</a>' +
         '<div class="property-image">' +
@@ -227,7 +228,7 @@ $( document ).ready(function() {
         '<div class="subtitle ">' +
         '<span class="type">' + type + '</span>' +
         '<span>·</span>' +
-        '<span class="status">in ' + stad + '</span>' +
+        '<span class="status">in ' + gemeente + '</span>' +
         '</div>' +
         '<p>' + beschrijving + '</p>' +
         '</div></figcaption></a>' +
@@ -336,7 +337,8 @@ $( document ).ready(function() {
                         $('#' + id + ' > .carousel-inner > .active').append(
                             loadPandTemplate(data[i]['fields']['referentienummer'],
                                             data[i]['fields']['type'],
-                                            data[i]['fields']['stad'],
+                                            data[i]['fields']['regio'],
+                                            data[i]['fields']['gemeente'],
                                             data[i]['fields']['straat_naam'],
                                             data[i]['fields']['postcode'],
                                             data[i]['fields']['status'],
@@ -359,7 +361,8 @@ $( document ).ready(function() {
                         $('#' + id + ' > .carousel-inner').append('<div class="item pand-' + counter + '">' +
                             loadPandTemplate(data[i]['fields']['referentienummer'],
                                             data[i]['fields']['type'],
-                                            data[i]['fields']['stad'],
+                                            data[i]['fields']['regio'],
+                                            data[i]['fields']['gemeente'],
                                             data[i]['fields']['straat_naam'],
                                             data[i]['fields']['postcode'],
                                             data[i]['fields']['status'],
@@ -378,10 +381,11 @@ $( document ).ready(function() {
                             )
                         );
                     } else {
-                        $('#' + id + ' > .carousel-inner > .pand-' + aantal_panden).append(
+                        $('#' + id + ' > .carousel-inner > .pand-' + counter).append(
                             loadPandTemplate(data[i]['fields']['referentienummer'],
                                             data[i]['fields']['type'],
-                                            data[i]['fields']['stad'],
+                                            data[i]['fields']['regio'],
+                                            data[i]['fields']['gemeente'],
                                             data[i]['fields']['straat_naam'],
                                             data[i]['fields']['postcode'],
                                             data[i]['fields']['status'],

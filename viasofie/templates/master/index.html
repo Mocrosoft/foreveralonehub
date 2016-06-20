@@ -237,7 +237,11 @@
     <div class="container property-container ">
         <div class="row  carousel slide" id="featured_property" data-ride="carousel">
             <div class="col-md-12 featured_property">
-                <h2>{% trans "Aanbevolen panden" %} </h2>
+                {% if index_panden_header %}
+                    <h2>{{index_panden_header.title}}</h2>
+                {% else  %}
+                    <h2>{% trans "Aanbevolen panden" %} </h2>
+                {% endif %}
             </div>
             <ul class="list-unstyled carousel-inner">
                 <div class="item active">
@@ -275,12 +279,11 @@
 <div class="col-md-12">
     <div class="container property-container ">
         <div class="row  carousel slide" id="favorite_property" data-ride="carousel">
-            <div class="col-md-12 featured_property">
+            <div class="col-md-12 favorite_property">
                 <h2>{% trans "Favoriete panden" %} </h2>
             </div>
             <ul class="list-unstyled carousel-inner">
                 <div class="item active">
-                    <div class="item active">
                     <li class="col-sm-6 col-md-4 col-lg-4 property-list-area primary-tooltips">
                         <div class="property-list-grid">
                             <h1 style="position:absolute;"></h1>
@@ -299,13 +302,12 @@
                             <img src="{% static 'master/img/placeholder.jpg' %}"/>
                         </div>
                     </li>
-                </div>
                 </div>
             </ul>
-            <a class="nav-slider prev" href="#featured_property" data-slide="prev">
+            <a class="nav-slider prev" href="#favorite_property" data-slide="prev">
                 <i class="fa fa-chevron-left"> </i>
             </a>
-            <a class="nav-slider next" href="#featured_property" data-slide="next">
+            <a class="nav-slider next" href="#favorite_property" data-slide="next">
                 <i class="fa fa-chevron-right"> </i>
             </a>
         </div>
