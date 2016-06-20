@@ -22,6 +22,7 @@
         transform: scale(1);
         transition: all 700ms;
     }
+
     .fb_iframe_widget {
         -webkit-transform: scale(2);
         -moz-transform: scale(2);
@@ -94,7 +95,7 @@
         {% for pand in alle_panden%}
             <li class="col-sm-6 col-md-4 col-lg-4 property-list-area primary-tooltips">
                 <div class="property-list-grid">
-                    <a href="#">
+                    <a href="{% url 'pand_detail' pand.referentienummer %}">
                         <div class="property-title" data-toggle="tooltip" data-placement="top"
                              title="Zeker de moeite waard">
                             <h3 class="title">Woning in {% inplace_edit "pand.gemeente" %}</h3>
