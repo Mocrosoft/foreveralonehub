@@ -525,6 +525,7 @@ class Pand_Main():
             if request.POST.get(c.naam) is not None:
                 criteria_v.append(request.POST.get(c.naam))
 
+        print(criteria_v)
         # Safety checks
         if status in [None, '']:
             status = ''
@@ -551,6 +552,7 @@ class Pand_Main():
         # Complex queries
         criteria_query = PandCriteria.objects.values_list('pand', flat=True) \
             .filter(criteria__naam__in=criteria_v)
+        print("CRITERIA = " + str(criteria_query))
         aantal_slaapkamers_criteria_query = PandCriteria.objects.values_list('pand', flat=True) \
             .filter(criteria__naam__icontains='slaapkamers', aantal__gte=min_slaapkamers)
         aantal_badkamers_criteria_query = PandCriteria.objects.values_list('pand', flat=True) \
@@ -559,19 +561,21 @@ class Pand_Main():
             .filter(eigenschap__naam__icontains='grondopp') \
             .filter(oppervlakte__gte=min_opp) \
             .filter(oppervlakte__lte=max_opp)
-        if (criteria_query is [None, '']) or (len(criteria_v) <= 0):
-            criteria_query = PandCriteria.objects.values_list('pand', flat=True).filter(criteria__naam__icontains='')
 
         # Monster query
         panden = Pand.objects.filter(gemeente__icontains=gemeente) \
             .filter(prijs__gte=min_prijs) \
             .filter(prijs__lte=max_prijs) \
             .filter(bouwjaar__gte=bouwjaar) \
-            .filter(pk__in=set(criteria_query)) \
-            .filter(pk__in=set(aantal_slaapkamers_criteria_query)) \
-            .filter(pk__in=set(aantal_badkamers_criteria_query)) \
-            .filter(referentienummer__icontains=ref_number) \
-            .filter(pk__in=set(eigenschappen_query_grond))
+            .filter(referentienummer__icontains=ref_number)
+        if len(eigenschappen_query_grond) > 0:
+            panden = pand.filter(pk__in=set(eigenschappen_query_grond))
+        if len(criteria_query) > 0:
+            panden = panden.filter(pk__in=set(criteria_query))
+        if min_slaapkamers != 0:
+            panden = panden.filter(pk__in=set(aantal_slaapkamers_criteria_query))
+        if min_badkamers != 0:
+            panden = panden.filter(pk__in=set(aantal_badkamers_criteria_query))
         if get_language() == 'fr':
             panden = panden.filter(staat__naam_fr__icontains=staat).filter(type__naam_fr__icontains=typehuis) \
                 .filter(status__naam_fr__icontains=status)

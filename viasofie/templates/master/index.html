@@ -238,7 +238,7 @@
         <div class="row  carousel slide" id="featured_property" data-ride="carousel">
             <div class="col-md-12 featured_property">
                 {% if index_panden_header %}
-                    <h2>{{index_panden_header.title}}</h2>
+                    <h2>{% inplace_edit "index_panden_header.title" %}</h2>
                 {% else  %}
                     <h2>{% trans "Aanbevolen panden" %} </h2>
                 {% endif %}

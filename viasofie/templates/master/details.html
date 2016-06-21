@@ -470,17 +470,12 @@
                                             </h3>
 
                                             <div class="floor-plan-meta">
-                                                <div>2500 m<sup>2</sup></div>
-                                                <div>1 Badkamer</div>
-                                                <div>2 Slaapkamer</div>
                                             </div>
                                         </div>
                                         <div id="verdiep2" class="panel-collapse collapse">
                                             <div class="panel-body floor-plan-content">
                                                 <div class="floor-plan-desc">
-                                                    <p>Dit is het eerste verdiep, implementeer nog een lightbox zodat je op
-                                                        de afbeelding kan
-                                                        Klikken en zo vergroten
+                                                    <p>Dit is het eerste verdiep
                                                     </p>
                                                     <p>Curabitur blandit tempus porttitor. Sed posuere consectetur est
                                                         at lobortis. Duis mollis, est non commodo luctus, nisi erat
@@ -752,49 +747,33 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtuDSI7A3e5Zf0C5xiNzPcrdVUxz8f3Cc&callback=initMap">
 </script>
-<script src="{% static 'master/js/details.js' %}"></script>
 <script src="{% static 'master/js/cookie/jquery.cookie.min.js' %}"></script>
 <script>
 
-        $('.favorite_pand_detail_link').on('click', function(e) {
-			//console.log("clicked " + $('input[name=password]').val());
-			e.preventDefault();
-            var url = $(this).attr('href');
-            var pk = $(this).parent().attr('data');
-			var token = $('input[name=csrfmiddlewaretoken]').val();
-			console.log(pk);
-			$('.favorite_pand_detail_link').each(function(key, val) {
-				if ($(this).attr('href') == url) {
-					if ($.cookie(url) == undefined) {
-						$.cookie(url, pk.substr(0, 1));
-						$(this).addClass('isFavorite');
-					} else {
-						$.removeCookie(url);
-						$(this).removeClass('isFavorite');
-					}
-				}
-			});
-			/*$.ajax({
-				url: url,
-				type:'POST',
-				//data:formData,
-				data: {csrfmiddlewaretoken: token, pk: pk},
-				success:function(data) {
-                    $('.favorite_pand_link').each(function(key, val) {
-                        if ($(this).attr('href') == url) {
-                            if (data['add_to_favorite'] == true) {
-                                $(this).addClass('isFavorite');
-                            } else {
-                                $(this).removeClass('isFavorite');
-                            }
-                        }
-                    });
-				},
-				error: function (data) {
-					console.log("error");
-				}
-			});*/
-		});
+        $( "a" ).each(function( index ) {
+            if ($(this).attr('data-val') != undefined && $.cookie($(this).attr('data-val')) != undefined) {
+                $(this).children().addClass("isFavorite");
+            }
+        })
+        $('a').click(function(e) {
+            if ($(this).attr('data-val') != undefined && $.cookie($(this).attr('data-val')) == undefined) {
+                $.cookie($(this).attr('data-val'), $(this).attr('data-val'),  { path: '/' });
+                $(this).children().addClass("isFavorite");
+                $.notify({
+                    title: "Notificatie:",
+                    message: "Pand is succesvol toegevoegd aan favorieten!",
+                });
+                e.preventDefault();
+            } else if ($(this).attr('data-val') != undefined && $.cookie($(this).attr('data-val')) != undefined) {
+                $.removeCookie($(this).attr('data-val'),  { path: '/' });
+                $(this).children().removeClass("isFavorite");
+                $.notify({
+                    title: "Notificatie:",
+                    message: "Pand is succesvol verwijderd van je favorieten!",
+                });
+                e.preventDefault();
+            }
+        });
 
 </script>
 

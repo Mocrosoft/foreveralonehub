@@ -325,8 +325,8 @@
                                     <div class="row">
                                         {% for c in criteria %}
                                         <div class="col-xs-12 col-sm-4 col-md-3 form-group">
-                                            <input name="{{c.naam}}" id="property-search-feature-{{c.pk}}"
-                                                   class="property-search-feature" type="checkbox" value="">
+                                            <input name="{{c}}" id="property-search-feature-{{c.pk}}"
+                                                   class="property-search-feature" type="checkbox" value="{{c}}">
                                             <label for="property-search-feature-{{c.pk}}">{{c}}</label>
                                         </div>
                                         {% endfor %}

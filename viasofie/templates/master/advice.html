@@ -1,6 +1,7 @@
 {%extends "master/base.html" %}
 {% load staticfiles %}
 {% load i18n %}
+{% load inplace_edit %}
 <!--  HEADER SECTIE -->
 {%block page_style %}
  <link href="{% static 'master/css/content/faq/style.css' %}" rel="stylesheet">
@@ -41,9 +42,9 @@
 			<li class="cd-faq-title"><h2>{% trans "Begrippen" %}</h2></li>
 			<li>
 				{% for faq in faq_begrippen %}
-					<a class="cd-faq-trigger" href="#0">{{faq.title}}</a>
+					<a class="cd-faq-trigger" href="#0">{% inplace_edit "faq.title" %}</a>
 					<div class="cd-faq-content">
-						<p>{{faq.content}}</p>
+						<p>{% inplace_edit "faq.content" %}</p>
 					</div> <!-- cd-faq-content -->
 				{% endfor %}
 			</li>
@@ -55,9 +56,9 @@
 
 			<li>
 				{% for faq in faq_algemeen %}
-					<a class="cd-faq-trigger" href="#0">{{faq.title}}</a>
+					<a class="cd-faq-trigger" href="#0">{% inplace_edit "faq.title" %}</a>
 					<div class="cd-faq-content">
-						<p>{{faq.content}}</p>
+						<p>{% inplace_edit "faq.content" %}</p>
 					</div> <!-- cd-faq-content -->
 				{% endfor %}
 			</li>
